@@ -1,6 +1,6 @@
 function Hello(){
     return(
-        <div clasName = "Hello">
+        <div className="Hello">
             hello.jsx area
         </div>
     )

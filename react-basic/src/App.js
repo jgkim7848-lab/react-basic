@@ -1,17 +1,15 @@
 import logo from './logo.svg';
-import './App.css';
-
+import './App.css';  //css link 같은 효과
 import Hello from './components/Hello';
 import Start from './components/Start';
-import Start from './components/HelloProps';
-import Start from './components/HelloProps2';
-import Start from './components/StartProps';
+import HelloProps from './components/HelloProps';
+import HelloProps2 from './components/HelloProps2';
 import StartProps from './components/StartProps';
-import StartProps from './components/Counter';
 import Counter from './components/Counter';
-
-
-
+import InputSample from './components/InputSample';
+import InputSample2 from './components/InputSample2';
+import UserList from './components/user/UserList';
+import UserList2 from './components/user/UserList2';
 
 
 
@@ -19,31 +17,59 @@ import Counter from './components/Counter';
 function App() {
   return (
     <div className="App">
-      <h1>React</h1>
-      <div>Hello React world</div>
-      <hr />
+      <h1>React~!!!</h1>
+      <div>Hello React World~!!</div>
 
-      <Hello />
-      <Hello />
-      <Hello />
       <hr />
+      <Hello />
+      <Hello />
 
+      <hr />
       <Start />
+
       <hr />
       <HelloProps name="홍길동" age="30" />
-      <HelloProps name="짱구" age="3230" />
+      <HelloProps name="짱구" age="5" />
 
       <hr />
-      <HelloProps2 name="홍길동" age="30" />
+      <HelloProps2 name="순이" age="20" />
+
+      <hr />
+      <StartProps name="홍길동" phone="1111" />
+
+      <hr />
+      <Counter />
+
+      <hr />
+      <InputSample />
+
+      <hr />
+      <InputSample2 />
+
+      <hr />
+      <UserList />
+
+
 
 
       <hr />
-      <StartProps name="홍킬동"></StartProps>
-
-      <hr />
-      <Counter></Counter>
+      <UserList2 />
 
 
+
+
+
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+
+
+      
     </div>
   );
 }
