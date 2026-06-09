@@ -1,3 +1,4 @@
+//user.tsx
 //타입들을 정의할거임.
 
 export type userType = {

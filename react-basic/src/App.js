@@ -1,3 +1,4 @@
+//App.js
 import logo from './logo.svg';
 import './App.css';  //css link 같은 효과
 import Hello from './components/Hello';

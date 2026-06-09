@@ -1,4 +1,5 @@
-import { useRef, useState } from "react"
+//userList2.tsx
+import { useMemo, useRef, useState } from "react"
 import UserList1 from "./userList1";
 import CreateUser from "./createUser";
 import next from "next";
@@ -77,6 +78,37 @@ export default function UserList2(){
     }
 
 
+    // 토글 설정
+    const onToggle = (id: number)=>{
+        // 클릭한 유저의 id 값의 active를 자신의 값과 반대로 설정
+        setUsers(
+            users.map(user => user.id === id ? {...user, active: !user.active} : user)
+        )
+    }
+
+    // 활성 사용자수 설정 : active가 true인 인원수
+    const countActiveUser = ()=>{
+        return users.filter(user => user.active).length;
+    }
+
+
+
+    const activeCount = useMemo(()=>countActiveUser(),[users]);
+//users에 변화가 없으면 useMEmo에 저장되있는 값을 그대로 사용
+//전체 화면에 변화가 있을때마다 불러오면 손해라서??? 맞나 이거. 
+// 대충 이런 뉘앙스였
+//뭐 누를때마다 새로고침되면 변수의 값이 매번 날아가서 push pop이 안되고
+//데이터를 가둬두는게 힘든거고 그래서 states를 쓰는거고???
+//그래서 states memo 이런걸 만든거임 (???)
+
+    // 전체 인원수 설정
+    const countUser = () => {
+        return users.length;
+    }
+
+    const count = useMemo(()=> countUser(), [users]);
+
+
     return(
         <div>
             <hr className="m-5" />
@@ -84,7 +116,9 @@ export default function UserList2(){
             <CreateUser username={username} email={email} onChange={onChange} onCreate={onCreate} />
 
             {/* 출력에 필요한 컴포넌트 UserList1 생성 */}
-            <UserList1 users={users} onRemove={onRemove} />
+            <UserList1 users={users} onRemove={onRemove} onToggle={onToggle} />
+
+            <div>활성인원수 : {activeCount} / {count}명</div>  
         </div>
     )
 }
