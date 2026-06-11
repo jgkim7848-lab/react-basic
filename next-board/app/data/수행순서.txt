@@ -1,0 +1,64 @@
+next.js (서버) <-> DB 연결
+
+- 설치 라이브러리
+npm i mysql2 => DB
+npm i axios => 비동기통신 (fetch 내장함수를 사용하면 설치 안해도 됨.)
+
+- DB 구성완료 => 파일 참조.
+
+1. 폴더구성
+    - app 내부에 생성
+    components > layout > Header / Footer
+    components > board > BoardList
+    data > data.ts (sample data)
+    type > boardType.ts (boardType 정의)
+    (라우팅을 위한 폴더) > page.tsx
+    api > DB 연결 구문
+    lib > db.ts (DB 설정 구문)
+
+    - next-board 내부에 생성
+    .env.local > 시크릿 정보를 관리 (숨김파일)
+
+Header 메뉴
+글쓰기, 게시글보기
+
+글쓰기 > 등록 > 리스트
+리스트 > 게시글마다 링크 > 상세페이지
+상세페이지 > 수정 > 수정페이지
+상세페이지 > 삭제(기능 수행) > 리스트
+수정페이지 > 완료 > 상세페이지
+
+- 리스트페이지
+- 글쓰기페이지 => input
+- 상세페이지
+- 수정페이지 => input
+
+2. layout 구성하기 
+    => components > layout > header.tsx / footer.tsx 삽입 > 컴포넌트 작성
+
+3. data.ts => 샘플데이터 넣기 
+
+4. type.ts => 데이터 타입 선언
+
+- 라우팅 경로
+    /  => home
+    /board => boardList
+    /board/[id] => 상세페이지
+    /board/write => 글쓰기페이지
+    /board/[id]/modify => 수정페이지
+
+
+5. components > board > boardList.tsx 생성
+    => data.ts => BoardList 구성
+    => table > title 부분에 링크 생성 => 라우트 설정
+    => 하단 버튼 home(/),  add(/board/write) 
+
+==================================================================
+
+
+DB 연결
+env파일 작성 규칙 - 횐경변수를 관리하는 파일
+
+api > board > route.ts
+
+api > board > [id] > route.ts
