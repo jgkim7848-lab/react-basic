@@ -9,32 +9,24 @@ export default function BoardList(){
     // data.ts에서 sample data 가져와서 출력
     // 각 게시글 마다 Link 달기
 
-    const [board, setBoard] = useState<boardType[] | []>([]/*boardList*/);
-                                                            //이걸 날려버림으로서 db에서 정상적으로 데이터 오나 확인
-                                                            
+    const [board, setBoard] = useState<boardType[] | []>([]);
 
-    //DB에서 데이터 가져오기
+    // DB에서 데이터 가져오기
     useEffect(()=>{
         const fetchData = async ()=>{
-            try{
-                //get요청
-                const response = await fetch('/api/board')
+            try {
+                // get 요청
+                const response = await fetch('/api/board');
                 const data = await response.json();
                 setBoard(data);
-
-
-            } catch(error)
-            {
+            } catch (error) {
                 console.log(error)
             }
         }
         fetchData();
     },[]);
 
-
-    if(!board) return <div className="container">not found</div>
-
-
+    if(!board) return <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">Not found!!!</div>
 
 
     return(
@@ -57,10 +49,12 @@ export default function BoardList(){
                                     className="border border-gray-300 text-xl text-center h-10">
                                     <td className="w-20 text-base">{b.id}</td>
                                     <td className="w-200 text-base">
-                                        <Link href={"/"} className="hover:underline">{b.title}</Link>
+                                        <Link href={`/board/${b.id}`} className="hover:underline">{b.title}</Link>
                                     </td>
                                     <td className="w-50 text-base">{b.writer}</td>
-                                    <td className="w-100 text-sm">{b.reg_date}</td>
+                                    <td className="w-100 text-sm">
+                                        {b.reg_date.substring(0, b.reg_date.lastIndexOf("T"))} / {b.reg_date.substring(b.reg_date.indexOf('T')+1, b.reg_date.lastIndexOf('.'))}
+                                    </td>
                                 </tr>
                             ))
                         }

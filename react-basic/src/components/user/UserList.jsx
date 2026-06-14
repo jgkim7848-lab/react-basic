@@ -1,4 +1,4 @@
-// 컴포넌트 분리
+// UserList.jsx
 const User = ({user}) =>{
     return(
         <div>

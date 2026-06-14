@@ -53,12 +53,55 @@ Header 메뉴
     => table > title 부분에 링크 생성 => 라우트 설정
     => 하단 버튼 home(/),  add(/board/write) 
 
-==================================================================
-
-
+--------------------------------------------
 DB 연결
-env파일 작성 규칙 - 횐경변수를 관리하는 파일
 
-api > board > route.ts
+.env 파일 작성 규칙 : 환경변수를 관리하는 파일
+react에서는 변수명 REACT_APP_ 로 시작되어야 한다.
 
-api > board > [id] > route.ts
+next 에서는 변수명 NEXT_PUBLIC_ 접두사가 필요
+변수명과 변수값 사이에는 공백 또는 따옴표 ("") 가 존재해서는 안된다.
+변수명은 대문자로 쓰는것이 관계이다.
+
+파일은 프로젝트 폴더에 생성 => .env.local
+
+lib > db.ts 파일 생성
+    DB 설정 사항 작성
+    => .env.local 자동으로 호출
+    => .env.local 은 숨김파일로 git에 올라가지 않고 파일을 참조해서 사용
+    => api key, password, 서버URL  숨겨야 되는 내용을 관리
+
+api 경로 => 서버로 DB 자료를 요청  /api/board
+- boardList => /api/board
+    api > board > route.ts
+- boardDetail => /api/board/[id]
+    api > board > [id] > route.ts
+
+------------------------------------------
+6. components > board > boardList  => /api/board  => method GET (요청)
+    => 구성한 샘플데이터 => 서버의 요청으로 변경
+    => useEffect() api로 서버에 boardList 요청 => 출력
+
+7. board > write > page.tsx  글쓰기 페이지 => /board/write
+    => 컴포넌트 생성 
+    => useState() 입력값을 board 객체로 생성 => 비동기 전송
+    =>/api/board  => method POST (등록)
+
+8. board > [id] > page.tsx  상세 페이지 => /board/[id]
+    => 컴포넌트 생성
+    => /api/board/[id] => method GET (요청)
+    => useEffect() 가져온 게시글 => 출력
+    => 하단 수정, 삭제 버튼 생성
+
+9. board > [id] > modify > page.tsx  수정 페이지 
+    => 컴포넌트 생성
+    => /api/board/[id] => method GET (요청)
+    => useEffect() 가져온 게시글 => 출력
+    => 입력한 값을 useState로 구성하여 수정 객체 생성 => api로 전송
+    => /api/board/[id] => method PUT (수정)
+    => 하단 완료 페이지에 onClick으로 실행
+
+10. 삭제 버튼 구현
+    => 상세 페이지 하단에서 함수로 구현
+    => 삭제 버튼에 onClick으로 실행
+    => /api/board/[id] => method DELETE (삭제)

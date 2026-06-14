@@ -1,28 +1,11 @@
-//1번째파일
-// function Hello(){
-//     return(
-//         <div></div>
-//     )
-// }
-
-// export default Hello;
-//이건 react에서 이렇게 썼었지.
-
-
-
-
-//jsx    >  react의 확장자 인 html js의 혼용하는 문법
-//jsx _ typescript = tsx
-//typeScript => js에서 타입을 확인하는 문법 추가.  미리 타입을 정할수있다.
-//빨간줄이 생겨도 실행은 됨.
-//
-
-
-
 export default function Hello(){
+
+    // jsx => react의 확장자(HTML+js를 혼용하는 문법)
+    // jsx + typeScript => tsx   / ts (타입정의)
+    // typeScript => js 에서 타입을 확인하는 문법 추가(컴파일) 미리 타입을 정함. 
     return(
         <div>
-            Hello.tsx area 
+            hello.tsx area
         </div>
     )
 }

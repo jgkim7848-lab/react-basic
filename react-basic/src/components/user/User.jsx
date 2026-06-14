@@ -1,3 +1,4 @@
+//User.jsx
 const User = ({user, onRemove, onToggle}) =>{
     return(
         <div>

@@ -1,4 +1,3 @@
-// 6번째 파일.
 import { useRef, useState } from "react";
 type inputsType = {
     id:string,

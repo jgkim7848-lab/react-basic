@@ -1,16 +1,19 @@
 
-
-// 2번째 컴포넌트 파일
 export default function Start(){
-    const name = "김용찬";
+
+    // 내부 변수 사용
+    const name = "홍길동";
+
+    // 스타일 객체 선언
     const style ={
         fontSize: '20px',
         color: 'white',
-        backgroundColor: 'black'
+        backgroundColor:'black'
     }
-    return (
+
+    return(
         <div>
-            <h2 style={style}>Start.tsx area {name} Hello~!!!</h2>
+            <h2 style={style}>Start.tsx area  {name} Hello~!!!</h2> 
         </div>
     )
 }

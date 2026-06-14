@@ -1,4 +1,3 @@
-//4번째 파일
 // "use client" => page.tsx에서 관리
 import { useState } from "react"
 
